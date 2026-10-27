@@ -1,0 +1,66 @@
+{
+  "region_length": 10000,
+  "sampled_nt_per_seed": 30,
+  "references": {
+    "kmers": {
+      "k": 30
+    },
+    "randstrobes": {
+      "l": 15,
+      "wmin": 25,
+      "wmax": 50
+    }
+  },
+  "sparse": {
+    "0.10": {
+      "minimizers": {
+        "params": {
+          "k": 30,
+          "w": 19
+        },
+        "calibrated_density": 0.09972
+      },
+      "syncmers": {
+        "params": {
+          "k": 30,
+          "s": 21
+        },
+        "calibrated_density": 0.09988
+      },
+      "syncmer_randstrobes": {
+        "params": {
+          "l": 15,
+          "s": 6,
+          "wmin": 2,
+          "wmax": 5
+        },
+        "calibrated_density": 0.09954
+      }
+    },
+    "0.20": {
+      "minimizers": {
+        "params": {
+          "k": 30,
+          "w": 9
+        },
+        "calibrated_density": 0.20012
+      },
+      "syncmers": {
+        "params": {
+          "k": 30,
+          "s": 26
+        },
+        "calibrated_density": 0.19966
+      },
+      "syncmer_randstrobes": {
+        "params": {
+          "l": 15,
+          "s": 11,
+          "wmin": 5,
+          "wmax": 10
+        },
+        "calibrated_density": 0.19939
+      }
+    }
+  }
+}
