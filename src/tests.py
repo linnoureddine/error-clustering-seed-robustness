@@ -32,7 +32,7 @@ def brute_minimizers(seq, k, w):
     sel = set()
     for a in range(n - w + 1):
         win = hs[a:a + w]
-        sel.add(a + win.index(min(win)))
+        sel.update(a + j for j, v in enumerate(win) if v == min(win))
     return sorted(sel)
 
 
@@ -77,9 +77,11 @@ def test_minimizers():
         seq = rand_seq(400)
         ss = S.minimizers(S.encode(seq), 11, 7)
         assert list(ss.starts) == brute_minimizers(seq, 11, 7)
-    # repeated k-mers, to check ties go to the leftmost
+    # repeated k-mers: every tied minimum is kept
     seq = "A" * 60 + rand_seq(60)
-    assert list(S.minimizers(S.encode(seq), 11, 7).starts) == brute_minimizers(seq, 11, 7)
+    got = list(S.minimizers(S.encode(seq), 11, 7).starts)
+    assert got == brute_minimizers(seq, 11, 7)
+    assert all(p in got for p in range(50))  # all-A 11-mers tie in every window
 
 
 def test_syncmers():

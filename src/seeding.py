@@ -74,13 +74,15 @@ def all_kmers(enc: np.ndarray, k: int) -> SeedSet:
 
 
 def minimizers(enc: np.ndarray, k: int, w: int) -> SeedSet:
-    # smallest hash in each window of w k-mers (argmin picks the leftmost on ties)
+    # smallest hash in each window of w k-mers; if several tie, all of them are kept
+    # (as in Roberts et al. 2004 and Li 2016)
     h = kmer_hashes(enc, k)
     n = len(h)
     if n < w:
         return SeedSet(np.zeros(0, int), np.zeros((0, 1), int), k, np.zeros(0, np.uint64), n)
     win = np.lib.stride_tricks.sliding_window_view(h, w)
-    sel = np.unique(np.argmin(win, axis=1) + np.arange(n - w + 1))
+    starts, offsets = np.nonzero(win == win.min(axis=1)[:, None])
+    sel = np.unique(starts + offsets)
     return SeedSet(sel, sel[:, None], k, h[sel], n)
 
 
