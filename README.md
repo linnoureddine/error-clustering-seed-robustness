@@ -21,17 +21,15 @@ Code for a CMPS 355 (Bioinformatics Algorithms, AUB, Fall 2026) research project
 
 ## How to run
 
-You need Python ≥ 3.9 with `numpy`, `pandas` and `matplotlib`. On Windows, use `python` instead of `python3`.
+You need Python ≥ 3.9 with `numpy`, `pandas` and `matplotlib`. On MacOS, use python3 instead of python.
 
 ```bash
 cd src
-python3 tests.py
-python3 calibrate.py
-python3 run_experiment.py
-python3 analyze.py
+python tests.py
+python calibrate.py
+python run_experiment.py
+python analyze.py
 ```
-
-For a quick test of the whole pipeline: `python3 run_experiment.py --regions 2 --reps 2 --out test`, then `python3 analyze.py --raw test`.
 
 Every random step uses a fixed seed, so reruns give identical numbers.
 
