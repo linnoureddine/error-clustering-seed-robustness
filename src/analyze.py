@@ -155,7 +155,7 @@ def rank_table(summary, ids):
     return pd.DataFrame(rows)
 
 
-# ---------------------------------------------------------------- figures
+# figures
 
 def style(ax):
     ax.grid(axis="y", color="#e4e3df", linewidth=0.8)
